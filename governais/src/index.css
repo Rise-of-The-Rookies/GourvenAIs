@@ -1,0 +1,411 @@
+@import "tailwindcss";
+
+/*
+  GourvenAIs — Enterprise AI Governance Platform
+  Design system tokens + base styles
+  Typography: Plus Jakarta Sans
+  Palette: Midnight / Ink / Graphite / Steel / Cloud / Signal (Emerald)
+*/
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Palette tokens */
+  --color-midnight: #0B1120;
+  --color-ink: #0F172A;
+  --color-graphite: #1E293B;
+  --color-steel: #334155;
+  --color-cloud: #F1F5F9;
+  --color-signal: #10B981;
+  --color-signal-hover: #059669;
+  --color-signal-muted: #10B98114;
+  --color-warning: #F59E0B;
+  --color-danger: #F43F5E;
+  --color-info: #3B82F6;
+}
+
+/* ── Base ───────────────────────────────────────────── */
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cloud);
+  color: var(--color-ink);
+}
+
+/* Tabular figures for numeric displays */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Balanced headings */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+/* ── Focus ──────────────────────────────────────────── */
+
+/* Never remove outline without providing a replacement */
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+}
+
+/* ── Scrollbar ──────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.45);
+}
+
+/* ── Reduced Motion ─────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Grid dot pattern for chart placeholders ────────── */
+
+.bg-grid-dots {
+  background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* ── Modal Animations ──────────────────────────────────── */
+
+@keyframes modal-backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes modal-panel-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-backdrop-enter {
+  animation: modal-backdrop-in 200ms ease-out both;
+}
+
+.modal-panel-enter {
+  animation: modal-panel-in 250ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Toast Animations ──────────────────────────────────── */
+
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+.toast-slide-in {
+  animation: toast-slide-in 300ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Collapsible Section ───────────────────────────────── */
+
+details[open] summary ~ * {
+  animation: details-expand 200ms ease-out;
+}
+
+@keyframes details-expand {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+details summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ── Custom Checkbox ───────────────────────────────────── */
+
+.checkbox-custom {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #94a3b8;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  transition: all 150ms ease;
+  flex-shrink: 0;
+}
+
+.checkbox-custom:checked {
+  background: #10B981;
+  border-color: #10B981;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+  background-size: 12px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.checkbox-custom:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+}
+
+/* ── Dashboard / Chart Styles ─────────────────────────── */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-card-enter {
+  animation: fadeInUp 350ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.stat-card-enter:nth-child(1) { animation-delay: 0ms; }
+.stat-card-enter:nth-child(2) { animation-delay: 60ms; }
+.stat-card-enter:nth-child(3) { animation-delay: 120ms; }
+.stat-card-enter:nth-child(4) { animation-delay: 180ms; }
+
+.page-enter {
+  animation: fadeInUp 300ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+  background-color: #f1f5f9;
+}
+
+.skeleton-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* Recharts custom tooltip */
+.chart-tooltip {
+  background: rgba(15, 23, 42, 0.92) !important;
+  border: 1px solid rgba(148, 163, 184, 0.15) !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+.chart-tooltip .recharts-tooltip-label {
+  color: #e2e8f0 !important;
+  font-size: 11px !important;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.chart-tooltip .recharts-tooltip-item {
+  color: #94a3b8 !important;
+  font-size: 12px !important;
+  padding: 1px 0 !important;
+}
+
+/* Select / dropdown base style */
+.select-field {
+  appearance: none;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 6px 32px 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1e293b;
+  cursor: pointer;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' fill='%2394a3b8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+}
+
+.select-field:hover {
+  border-color: #cbd5e1;
+}
+
+.select-field:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+/* Toggle switch */
+.toggle-switch {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  background: #cbd5e1;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background 200ms ease;
+  border: none;
+  padding: 0;
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 9999px;
+  transition: transform 200ms ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.toggle-switch[aria-checked="true"] {
+  background: var(--color-signal);
+}
+
+.toggle-switch[aria-checked="true"]::after {
+  transform: translateX(16px);
+}
+
+.toggle-switch:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+}
+
+/* Pagination button */
+.page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+  background: white;
+  color: #475569;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.page-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page-btn.active {
+  background: var(--color-signal);
+  border-color: var(--color-signal);
+  color: white;
+}
+
+/* Date range button group */
+.range-btn {
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+  background: white;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.range-btn:first-child {
+  border-radius: 6px 0 0 6px;
+}
+
+.range-btn:last-child {
+  border-radius: 0 6px 6px 0;
+}
+
+.range-btn:not(:first-child) {
+  margin-left: -1px;
+}
+
+.range-btn:hover:not(.range-active) {
+  background: #f8fafc;
+  color: #334155;
+}
+
+.range-btn.range-active {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+.range-btn:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 1px;
+  z-index: 2;
+}
+
