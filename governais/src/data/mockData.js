@@ -226,68 +226,68 @@ export const MOCK_EMPLOYEES = [
 
 export const mockUsageLogs = [
   // ── Day 1 (yesterday) — light cluster ────────────────
-  { id: 'ul1',  toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(1, 9),  dataTypeShared: 'Source code',    sensitivityFlagged: false },
-  { id: 'ul2',  toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Marcus Lee',    department: 'Sales',       timestamp: daysAgoAt(1, 11), dataTypeShared: 'Customer data',  sensitivityFlagged: true },
-  { id: 'ul3',  toolId: 't4', toolName: 'Notion AI',            employeeName: 'Dana Kim',      department: 'Marketing',   timestamp: daysAgoAt(1, 14), dataTypeShared: 'Internal docs',  sensitivityFlagged: false },
+  { id: 'ul1',  toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(1, 9),  dataTypeShared: 'Source code',    sensitivityFlagged: false, declared: false },
+  { id: 'ul2',  toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Marcus Lee',    department: 'Sales',       timestamp: daysAgoAt(1, 11), dataTypeShared: 'Customer data',  sensitivityFlagged: true, declared: false },
+  { id: 'ul3',  toolId: 't4', toolName: 'Notion AI',            employeeName: 'Dana Kim',      department: 'Marketing',   timestamp: daysAgoAt(1, 14), dataTypeShared: 'Internal docs',  sensitivityFlagged: false, declared: false },
 
   // ── Day 2 ────────────────────────────────────────────
-  { id: 'ul4',  toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Samira Obi',    department: 'Engineering', timestamp: daysAgoAt(2, 10), dataTypeShared: 'Source code',    sensitivityFlagged: false },
-  { id: 'ul5',  toolId: 't3', toolName: 'Tableau AI',           employeeName: 'Jordan Patel',  department: 'Finance',     timestamp: daysAgoAt(2, 15), dataTypeShared: 'Financial data', sensitivityFlagged: true },
+  { id: 'ul4',  toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Samira Obi',    department: 'Engineering', timestamp: daysAgoAt(2, 10), dataTypeShared: 'Source code',    sensitivityFlagged: false, declared: false },
+  { id: 'ul5',  toolId: 't3', toolName: 'Tableau AI',           employeeName: 'Jordan Patel',  department: 'Finance',     timestamp: daysAgoAt(2, 15), dataTypeShared: 'Financial data', sensitivityFlagged: true, declared: false },
 
   // ── Day 3 ────────────────────────────────────────────
-  { id: 'ul6',  toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Lisa Tran',     department: 'Marketing',   timestamp: daysAgoAt(3, 9),  dataTypeShared: 'None',           sensitivityFlagged: false },
-  { id: 'ul7',  toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(3, 13), dataTypeShared: 'Source code',    sensitivityFlagged: false },
-  { id: 'ul8',  toolId: 't4', toolName: 'Notion AI',            employeeName: 'Samira Obi',    department: 'Engineering', timestamp: daysAgoAt(3, 16), dataTypeShared: 'Internal docs',  sensitivityFlagged: false },
+  { id: 'ul6',  toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Lisa Tran',     department: 'Marketing',   timestamp: daysAgoAt(3, 9),  dataTypeShared: 'None',           sensitivityFlagged: false, declared: false },
+  { id: 'ul7',  toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(3, 13), dataTypeShared: 'Source code',    sensitivityFlagged: false, declared: false },
+  { id: 'ul8',  toolId: 't4', toolName: 'Notion AI',            employeeName: 'Samira Obi',    department: 'Engineering', timestamp: daysAgoAt(3, 16), dataTypeShared: 'Internal docs',  sensitivityFlagged: false, declared: false },
 
   // ── Day 5 (skip day 4 — weekend feel) ───────────────
-  { id: 'ul9',  toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Tyler Brooks',  department: 'Sales',       timestamp: daysAgoAt(5, 10), dataTypeShared: 'Customer data',  sensitivityFlagged: true },
-  { id: 'ul10', toolId: 't3', toolName: 'Tableau AI',           employeeName: 'Noah Fischer',  department: 'Finance',     timestamp: daysAgoAt(5, 11), dataTypeShared: 'Financial data', sensitivityFlagged: false },
-  { id: 'ul11', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(5, 14), dataTypeShared: 'Source code',    sensitivityFlagged: false },
+  { id: 'ul9',  toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Tyler Brooks',  department: 'Sales',       timestamp: daysAgoAt(5, 10), dataTypeShared: 'Customer data',  sensitivityFlagged: true, declared: false },
+  { id: 'ul10', toolId: 't3', toolName: 'Tableau AI',           employeeName: 'Noah Fischer',  department: 'Finance',     timestamp: daysAgoAt(5, 11), dataTypeShared: 'Financial data', sensitivityFlagged: false, declared: false },
+  { id: 'ul11', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(5, 14), dataTypeShared: 'Source code',    sensitivityFlagged: false, declared: false },
 
   // ── Day 7 ────────────────────────────────────────────
-  { id: 'ul12', toolId: 't4', toolName: 'Notion AI',            employeeName: 'Dana Kim',      department: 'Marketing',   timestamp: daysAgoAt(7, 9),  dataTypeShared: 'Internal docs',  sensitivityFlagged: false },
-  { id: 'ul13', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Samira Obi',    department: 'Engineering', timestamp: daysAgoAt(7, 12), dataTypeShared: 'Source code',    sensitivityFlagged: true },
-  { id: 'ul14', toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Marcus Lee',    department: 'Sales',       timestamp: daysAgoAt(7, 15), dataTypeShared: 'None',           sensitivityFlagged: false },
+  { id: 'ul12', toolId: 't4', toolName: 'Notion AI',            employeeName: 'Dana Kim',      department: 'Marketing',   timestamp: daysAgoAt(7, 9),  dataTypeShared: 'Internal docs',  sensitivityFlagged: false, declared: false },
+  { id: 'ul13', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Samira Obi',    department: 'Engineering', timestamp: daysAgoAt(7, 12), dataTypeShared: 'Source code',    sensitivityFlagged: true, declared: false },
+  { id: 'ul14', toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Marcus Lee',    department: 'Sales',       timestamp: daysAgoAt(7, 15), dataTypeShared: 'None',           sensitivityFlagged: false, declared: false },
 
   // ── Day 9 ────────────────────────────────────────────
-  { id: 'ul15', toolId: 't3', toolName: 'Tableau AI',           employeeName: 'Jordan Patel',  department: 'Finance',     timestamp: daysAgoAt(9, 10), dataTypeShared: 'Financial data', sensitivityFlagged: false },
+  { id: 'ul15', toolId: 't3', toolName: 'Tableau AI',           employeeName: 'Jordan Patel',  department: 'Finance',     timestamp: daysAgoAt(9, 10), dataTypeShared: 'Financial data', sensitivityFlagged: false, declared: false },
 
   // ── Day 11 — busy day ───────────────────────────────
-  { id: 'ul16', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(11, 8),  dataTypeShared: 'Source code',    sensitivityFlagged: false },
-  { id: 'ul17', toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Dana Kim',      department: 'Marketing',   timestamp: daysAgoAt(11, 10), dataTypeShared: 'Internal docs',  sensitivityFlagged: false },
-  { id: 'ul18', toolId: 't4', toolName: 'Notion AI',            employeeName: 'Lisa Tran',     department: 'Marketing',   timestamp: daysAgoAt(11, 12), dataTypeShared: 'Internal docs',  sensitivityFlagged: false },
-  { id: 'ul19', toolId: 't3', toolName: 'Tableau AI',           employeeName: 'Noah Fischer',  department: 'Finance',     timestamp: daysAgoAt(11, 14), dataTypeShared: 'Customer data',  sensitivityFlagged: true },
+  { id: 'ul16', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(11, 8),  dataTypeShared: 'Source code',    sensitivityFlagged: false, declared: false },
+  { id: 'ul17', toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Dana Kim',      department: 'Marketing',   timestamp: daysAgoAt(11, 10), dataTypeShared: 'Internal docs',  sensitivityFlagged: false, declared: false },
+  { id: 'ul18', toolId: 't4', toolName: 'Notion AI',            employeeName: 'Lisa Tran',     department: 'Marketing',   timestamp: daysAgoAt(11, 12), dataTypeShared: 'Internal docs',  sensitivityFlagged: false, declared: false },
+  { id: 'ul19', toolId: 't3', toolName: 'Tableau AI',           employeeName: 'Noah Fischer',  department: 'Finance',     timestamp: daysAgoAt(11, 14), dataTypeShared: 'Customer data',  sensitivityFlagged: true, declared: false },
 
   // ── Day 14 ───────────────────────────────────────────
-  { id: 'ul20', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Samira Obi',    department: 'Engineering', timestamp: daysAgoAt(14, 9),  dataTypeShared: 'Source code',    sensitivityFlagged: false },
-  { id: 'ul21', toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Tyler Brooks',  department: 'Sales',       timestamp: daysAgoAt(14, 11), dataTypeShared: 'Customer data',  sensitivityFlagged: true },
+  { id: 'ul20', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Samira Obi',    department: 'Engineering', timestamp: daysAgoAt(14, 9),  dataTypeShared: 'Source code',    sensitivityFlagged: false, declared: false },
+  { id: 'ul21', toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Tyler Brooks',  department: 'Sales',       timestamp: daysAgoAt(14, 11), dataTypeShared: 'Customer data',  sensitivityFlagged: true, declared: false },
 
   // ── Day 17 ───────────────────────────────────────────
-  { id: 'ul22', toolId: 't4', toolName: 'Notion AI',            employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(17, 10), dataTypeShared: 'Internal docs',  sensitivityFlagged: false },
-  { id: 'ul23', toolId: 't3', toolName: 'Tableau AI',           employeeName: 'Jordan Patel',  department: 'Finance',     timestamp: daysAgoAt(17, 14), dataTypeShared: 'Financial data', sensitivityFlagged: false },
-  { id: 'ul24', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(17, 16), dataTypeShared: 'Source code',    sensitivityFlagged: false },
+  { id: 'ul22', toolId: 't4', toolName: 'Notion AI',            employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(17, 10), dataTypeShared: 'Internal docs',  sensitivityFlagged: false, declared: false },
+  { id: 'ul23', toolId: 't3', toolName: 'Tableau AI',           employeeName: 'Jordan Patel',  department: 'Finance',     timestamp: daysAgoAt(17, 14), dataTypeShared: 'Financial data', sensitivityFlagged: false, declared: false },
+  { id: 'ul24', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(17, 16), dataTypeShared: 'Source code',    sensitivityFlagged: false, declared: false },
 
   // ── Day 20 ───────────────────────────────────────────
-  { id: 'ul25', toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Lisa Tran',     department: 'Marketing',   timestamp: daysAgoAt(20, 9),  dataTypeShared: 'None',           sensitivityFlagged: false },
-  { id: 'ul26', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Samira Obi',    department: 'Engineering', timestamp: daysAgoAt(20, 13), dataTypeShared: 'Source code',    sensitivityFlagged: false },
+  { id: 'ul25', toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Lisa Tran',     department: 'Marketing',   timestamp: daysAgoAt(20, 9),  dataTypeShared: 'None',           sensitivityFlagged: false, declared: false },
+  { id: 'ul26', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Samira Obi',    department: 'Engineering', timestamp: daysAgoAt(20, 13), dataTypeShared: 'Source code',    sensitivityFlagged: false, declared: false },
 
   // ── Day 22 — spike ──────────────────────────────────
-  { id: 'ul27', toolId: 't4', toolName: 'Notion AI',            employeeName: 'Dana Kim',      department: 'Marketing',   timestamp: daysAgoAt(22, 9),  dataTypeShared: 'Internal docs',  sensitivityFlagged: false },
-  { id: 'ul28', toolId: 't3', toolName: 'Tableau AI',           employeeName: 'Noah Fischer',  department: 'Finance',     timestamp: daysAgoAt(22, 10), dataTypeShared: 'Financial data', sensitivityFlagged: true },
-  { id: 'ul29', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(22, 11), dataTypeShared: 'Source code',    sensitivityFlagged: false },
-  { id: 'ul30', toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Marcus Lee',    department: 'Sales',       timestamp: daysAgoAt(22, 14), dataTypeShared: 'Customer data',  sensitivityFlagged: false },
+  { id: 'ul27', toolId: 't4', toolName: 'Notion AI',            employeeName: 'Dana Kim',      department: 'Marketing',   timestamp: daysAgoAt(22, 9),  dataTypeShared: 'Internal docs',  sensitivityFlagged: false, declared: false },
+  { id: 'ul28', toolId: 't3', toolName: 'Tableau AI',           employeeName: 'Noah Fischer',  department: 'Finance',     timestamp: daysAgoAt(22, 10), dataTypeShared: 'Financial data', sensitivityFlagged: true, declared: false },
+  { id: 'ul29', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(22, 11), dataTypeShared: 'Source code',    sensitivityFlagged: false, declared: false },
+  { id: 'ul30', toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Marcus Lee',    department: 'Sales',       timestamp: daysAgoAt(22, 14), dataTypeShared: 'Customer data',  sensitivityFlagged: false, declared: false },
 
   // ── Day 25 ───────────────────────────────────────────
-  { id: 'ul31', toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Jordan Patel',  department: 'Finance',     timestamp: daysAgoAt(25, 10), dataTypeShared: 'Financial data', sensitivityFlagged: false },
-  { id: 'ul32', toolId: 't4', toolName: 'Notion AI',            employeeName: 'Samira Obi',    department: 'Engineering', timestamp: daysAgoAt(25, 15), dataTypeShared: 'Internal docs',  sensitivityFlagged: false },
+  { id: 'ul31', toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Jordan Patel',  department: 'Finance',     timestamp: daysAgoAt(25, 10), dataTypeShared: 'Financial data', sensitivityFlagged: false, declared: false },
+  { id: 'ul32', toolId: 't4', toolName: 'Notion AI',            employeeName: 'Samira Obi',    department: 'Engineering', timestamp: daysAgoAt(25, 15), dataTypeShared: 'Internal docs',  sensitivityFlagged: false, declared: false },
 
   // ── Day 27 ───────────────────────────────────────────
-  { id: 'ul33', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(27, 9),  dataTypeShared: 'Source code',    sensitivityFlagged: true },
-  { id: 'ul34', toolId: 't3', toolName: 'Tableau AI',           employeeName: 'Noah Fischer',  department: 'Finance',     timestamp: daysAgoAt(27, 13), dataTypeShared: 'Financial data', sensitivityFlagged: false },
+  { id: 'ul33', toolId: 't1', toolName: 'GitHub Copilot',      employeeName: 'Alex Chen',     department: 'Engineering', timestamp: daysAgoAt(27, 9),  dataTypeShared: 'Source code',    sensitivityFlagged: true, declared: false },
+  { id: 'ul34', toolId: 't3', toolName: 'Tableau AI',           employeeName: 'Noah Fischer',  department: 'Finance',     timestamp: daysAgoAt(27, 13), dataTypeShared: 'Financial data', sensitivityFlagged: false, declared: false },
 
   // ── Day 29 ───────────────────────────────────────────
-  { id: 'ul35', toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Tyler Brooks',  department: 'Sales',       timestamp: daysAgoAt(29, 11), dataTypeShared: 'Customer data',  sensitivityFlagged: false },
-  { id: 'ul36', toolId: 't4', toolName: 'Notion AI',            employeeName: 'Lisa Tran',     department: 'Marketing',   timestamp: daysAgoAt(29, 14), dataTypeShared: 'Internal docs',  sensitivityFlagged: false },
+  { id: 'ul35', toolId: 't2', toolName: 'Grammarly Business',   employeeName: 'Tyler Brooks',  department: 'Sales',       timestamp: daysAgoAt(29, 11), dataTypeShared: 'Customer data',  sensitivityFlagged: false, declared: false },
+  { id: 'ul36', toolId: 't4', toolName: 'Notion AI',            employeeName: 'Lisa Tran',     department: 'Marketing',   timestamp: daysAgoAt(29, 14), dataTypeShared: 'Internal docs',  sensitivityFlagged: false, declared: false },
 ];
 
 // ── Sensitivity Flags ──────────────────────────────────

@@ -68,6 +68,19 @@ const CATEGORIES = [
   },
 ];
 
+// ── Borderline terms (lower-severity, yellow-lane) ────
+
+const BORDERLINE_TERMS = [
+  { value: 'internal', label: 'internal' },
+  { value: 'draft', label: 'draft' },
+  { value: 'unreleased', label: 'unreleased' },
+  { value: 'roadmap', label: 'roadmap' },
+  { value: 'do not share', label: 'do not share' },
+  { value: 'pre-release', label: 'pre-release' },
+  { value: 'embargo', label: 'embargo' },
+  { value: 'off the record', label: 'off the record' },
+];
+
 // ── Classifier ────────────────────────────────────────
 
 /**
@@ -112,4 +125,57 @@ export function classifyContent(text) {
     category: topCategory,
     matchedTerms: allMatchedTerms,
   };
+}
+
+// ── Prompt Customs Check ──────────────────────────────
+
+/** Red-lane categories — severity ≥ 2 (PII, Financial, Credentials). */
+const RED_CATEGORIES = ['Credentials', 'Financial', 'PII'];
+
+/**
+ * Run the classifier and map the result to a customs "lane".
+ *
+ * @param {string} text — The prompt content to scan.
+ * @returns {{ lane: 'green' | 'yellow' | 'red', category: string | null, matchedTerms: string[] }}
+ */
+export function checkPromptCustoms(text) {
+  if (!text || typeof text !== 'string' || text.trim().length === 0) {
+    return { lane: 'green', category: null, matchedTerms: [] };
+  }
+
+  // Run the main classifier first
+  const classification = classifyContent(text);
+
+  // Check borderline terms independently
+  const lower = text.toLowerCase();
+  const borderlineHits = [];
+  for (const term of BORDERLINE_TERMS) {
+    if (lower.includes(term.value) && !classification.matchedTerms.includes(term.label)) {
+      borderlineHits.push(term.label);
+    }
+  }
+
+  // Merge all matched terms
+  const allTerms = [...classification.matchedTerms, ...borderlineHits];
+
+  // Determine lane
+  if (classification.flagged && RED_CATEGORIES.includes(classification.category)) {
+    // Red — high-severity category detected
+    return { lane: 'red', category: classification.category, matchedTerms: allTerms };
+  }
+
+  if (
+    (classification.flagged && classification.category === 'Confidential/Internal') ||
+    borderlineHits.length > 0
+  ) {
+    // Yellow — confidential/internal or borderline terms only
+    return {
+      lane: 'yellow',
+      category: classification.category || 'Confidential/Internal',
+      matchedTerms: allTerms,
+    };
+  }
+
+  // Green — nothing detected
+  return { lane: 'green', category: null, matchedTerms: [] };
 }

@@ -10,6 +10,7 @@ import RegistryPage from './pages/RegistryPage';
 import ApprovalsPage from './pages/ApprovalsPage';
 import UsagePage from './pages/UsagePage';
 import FlagsPage from './pages/FlagsPage';
+import CustomsCheckPage from './pages/CustomsCheckPage';
 import LoginPage from './pages/LoginPage';
 
 function AppShell({ children }) {
@@ -72,6 +73,14 @@ export default function App() {
                 element={
                   <AppShell>
                     <FlagsPage />
+                  </AppShell>
+                }
+              />
+              <Route
+                path="/customs-check"
+                element={
+                  <AppShell>
+                    <CustomsCheckPage />
                   </AppShell>
                 }
               />

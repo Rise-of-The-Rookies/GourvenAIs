@@ -10,6 +10,7 @@ import {
   Area,
   BarChart,
   Bar,
+  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -21,6 +22,7 @@ import {
 const ACCENT = '#10B981';
 const ACCENT_MUTED = 'rgba(16, 185, 129, 0.12)';
 const FLAGGED = '#F43F5E';
+const AMBER = '#F59E0B';
 const GRID = '#f1f5f9';
 
 // ── Helpers ────────────────────────────────────────────
@@ -192,6 +194,14 @@ export default function DashboardPage() {
     [usageLogs],
   );
 
+  // Customs activity breakdown — green/yellow/red from last 7 days
+  const customsCounts = useMemo(() => {
+    const green = weekLogs.filter((l) => !l.sensitivityFlagged && !l.declared).length;
+    const yellow = weekLogs.filter((l) => l.declared === true).length;
+    const red = weekLogs.filter((l) => l.sensitivityFlagged === true).length;
+    return [{ label: 'Green', count: green, fill: ACCENT }, { label: 'Yellow', count: yellow, fill: AMBER }, { label: 'Red', count: red, fill: FLAGGED }];
+  }, [weekLogs]);
+
   return (
     <div className="space-y-5 page-enter">
       <OnboardingBanner />
@@ -354,6 +364,72 @@ export default function DashboardPage() {
           </Card.Body>
         </Card>
       </div>
+
+      {/* Customs Activity */}
+      <Card>
+        <Card.Header>
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm font-semibold text-slate-900">Customs Activity — Last 7 Days</h2>
+            <Link
+              to="/customs-check"
+              className="text-[11px] font-semibold text-emerald-600 hover:text-emerald-700 transition-colors no-underline"
+            >
+              Open Customs Check →
+            </Link>
+          </div>
+        </Card.Header>
+        <Card.Body>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            {/* Summary stats */}
+            <div className="flex flex-col gap-2.5 lg:col-span-1">
+              {customsCounts.map((item) => (
+                <div
+                  key={item.label}
+                  className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg bg-slate-50/60 border border-slate-100"
+                >
+                  <span
+                    className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                    style={{ background: item.fill }}
+                    aria-hidden="true"
+                  />
+                  <span className="text-[12px] font-medium text-slate-600 flex-1">{item.label}</span>
+                  <span className="text-[15px] font-bold text-slate-900 tabular-nums">{item.count}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Bar chart */}
+            <div className="lg:col-span-2">
+              <ResponsiveContainer width="100%" height={130}>
+                <BarChart data={customsCounts} layout="vertical" margin={{ top: 4, right: 16, left: 0, bottom: 4 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke={GRID} horizontal={false} />
+                  <XAxis
+                    type="number"
+                    allowDecimals={false}
+                    tick={{ fontSize: 11, fill: '#94a3b8' }}
+                    axisLine={false}
+                    tickLine={false}
+                  />
+                  <YAxis
+                    type="category"
+                    dataKey="label"
+                    width={55}
+                    tick={{ fontSize: 11, fill: '#64748b', fontWeight: 500 }}
+                    axisLine={false}
+                    tickLine={false}
+                  />
+                  <Tooltip content={<ChartTooltip />} />
+                  <Bar dataKey="count" name="Prompts" radius={[0, 4, 4, 0]} barSize={20}>
+                    {customsCounts.map((entry, i) => (
+                      <Cell key={i} fill={entry.fill} />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        </Card.Body>
+      </Card>
 
       {/* Recent Activity */}
       <Card>
